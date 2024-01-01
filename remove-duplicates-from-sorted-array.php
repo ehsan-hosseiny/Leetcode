@@ -30,19 +30,17 @@ class solution{
      * @return Integer
      */
     function removeDuplicates(&$nums) {
-
         $size = count($nums);
-        $cur = null;
-        $k = 0;
-
-        for($i=0;$i < $size ; $i++){
-            if($nums[$i] !== $cur){
-                $cur = $nums[$i];
-                $nums[$k]=$nums[$i];
-                $i++;
+        if($size <= 2) return $size;
+        $k = 2;
+        
+        for($p = 2; $p < $size ; $p++){
+            if($nums[$p] !== $nums[$k-2]){
+                $nums[$k] = $nums[$p];
+                $k++;
             }
         }
-        
+        return $k;
     }
 
 }
